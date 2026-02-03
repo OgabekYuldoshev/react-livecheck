@@ -1,6 +1,6 @@
 {
 	"name": "react-livecheck",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "React library for person liveness detection — verify that a user is a real live person (e.g. face liveness, anti-spoofing) in web applications.",
 	"main": "dist/main.js",
 	"module": "dist/main.js",
