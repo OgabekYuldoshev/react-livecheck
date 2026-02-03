@@ -16,6 +16,7 @@
 	},
 	"files": [
 		"dist",
+		"LICENSE",
 		"README.md"
 	],
 	"engines": {
@@ -47,7 +48,7 @@
 		"biometric"
 	],
 	"author": "Ogabek Yuldoshev <yuldashoff@tutamail.com>",
-	"license": "ISC",
+	"license": "MIT",
 	"packageManager": "pnpm@10.25.0",
 	"devDependencies": {
 		"@biomejs/biome": "2.3.10",
