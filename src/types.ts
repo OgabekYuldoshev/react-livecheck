@@ -2,13 +2,25 @@ import type { RefObject } from "react";
 
 export type Landmarks = Array<{ x: number; y: number; z: number }>;
 
+/** Normalized face bounding box (0–1 relative to video size) */
+export interface FaceBoundingBox {
+	x: number;
+	y: number;
+	width: number;
+	height: number;
+}
+
 export const LivenessErrorCode = {
+	ABORTED: "ABORTED",
+	CAMERA_IN_USE: "CAMERA_IN_USE",
 	CAMERA_NOT_FOUND: "CAMERA_NOT_FOUND",
-	PERMISSION_DENIED: "PERMISSION_DENIED",
-	NOT_ALLOWED: "NOT_ALLOWED",
-	MODEL_LOAD_FAILED: "MODEL_LOAD_FAILED",
 	FACE_NOT_DETECTED: "FACE_NOT_DETECTED",
+	MODEL_LOAD_FAILED: "MODEL_LOAD_FAILED",
 	MULTIPLE_FACES: "MULTIPLE_FACES",
+	NOT_ALLOWED: "NOT_ALLOWED",
+	OVERCONSTRAINED: "OVERCONSTRAINED",
+	PERMISSION_DENIED: "PERMISSION_DENIED",
+	PLAY_FAILED: "PLAY_FAILED",
 	UNKNOWN: "UNKNOWN",
 } as const;
 
@@ -55,5 +67,7 @@ export interface UseLivenessReturn {
 	error: LivenessError | null;
 	isReady: boolean;
 	isFaceDetected: boolean;
+	/** Face bounding box (0–1), null when no face */
+	faceBoundingBox: FaceBoundingBox | null;
 	retry: () => void;
 }

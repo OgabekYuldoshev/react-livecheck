@@ -1,4 +1,5 @@
 export type {
+	FaceBoundingBox,
 	Landmarks,
 	LivenessError,
 	UseLivenessCameraOptions,

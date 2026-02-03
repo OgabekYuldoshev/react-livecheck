@@ -3,7 +3,10 @@
 	"version": "1.0.0",
 	"description": "React library for person liveness detection — verify that a user is a real live person (e.g. face liveness, anti-spoofing) in web applications.",
 	"main": "dist/main.js",
+	"module": "dist/main.js",
+	"types": "dist/main.d.ts",
 	"type": "module",
+	"sideEffects": false,
 	"exports": {
 		".": {
 			"types": "./dist/main.d.ts",
@@ -15,6 +18,9 @@
 		"dist",
 		"README.md"
 	],
+	"engines": {
+		"node": ">=18"
+	},
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/OgabekYuldoshev/react-livecheck.git"
@@ -25,6 +31,7 @@
 	"homepage": "https://github.com/OgabekYuldoshev/react-livecheck#readme",
 	"scripts": {
 		"preinstall": "npx only-allow pnpm",
+		"prepublishOnly": "pnpm run build",
 		"release": "standard-version",
 		"build": "tsup",
 		"lint": "biome check --write ."
