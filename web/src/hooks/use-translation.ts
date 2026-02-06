@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useI18n } from "@/context/I18nContext";
+import { useI18n } from "@/context/i18n-context";
 import { en } from "@/locales/en";
 import { uz } from "@/locales/uz";
 

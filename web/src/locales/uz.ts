@@ -154,7 +154,8 @@ export const uz = {
 		retIsFaceDetected: "Yuz kadrda.",
 		retFaceBoundingBox: "Overlay uchun normalizatsiya qilingan (0–1) toʻrtburchak.",
 		retRetry: "Xatoni tozalash va qayta boshlash.",
-		retryNote: "MULTIPLE_FACES, FACE_NOT_DETECTED, MODEL_LOAD_FAILED yoki PLAY_FAILED da — qayta boshlash uchun retry() chaqing.",
+		retryNote:
+			"MULTIPLE_FACES, FACE_NOT_DETECTED, MODEL_LOAD_FAILED yoki PLAY_FAILED da — qayta boshlash uchun retry() chaqing.",
 		errAborted: "Kamera soʻrovi bekor qilindi.",
 		errCameraInUse: "Kamera boshqa dastur yoki tabda ishlatilmoqda.",
 		errCameraNotFound: "Kamera qurilmasi topilmadi.",

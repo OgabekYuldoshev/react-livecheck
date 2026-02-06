@@ -1,6 +1,6 @@
-import { APISection } from "@/components/docs/APISection";
+import { APISection } from "@/components/docs/api-section";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useTranslation } from "@/hooks/useTranslation";
+import { useTranslation } from "@/hooks/use-translation";
 
 export default function ApiReference() {
 	const { t } = useTranslation();

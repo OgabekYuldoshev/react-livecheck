@@ -1,6 +1,6 @@
-import { CodeBlock } from "@/components/docs/CodeBlock";
+import { CodeBlock } from "@/components/docs/code-block";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useTranslation } from "@/hooks/useTranslation";
+import { useTranslation } from "@/hooks/use-translation";
 
 const configExample = `useLiveness({
   camera: { width: 640, height: 480, facingMode: "user" },

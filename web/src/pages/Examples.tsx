@@ -1,7 +1,7 @@
-import { CodeBlock } from "@/components/docs/CodeBlock";
-import { ExamplePreview } from "@/components/docs/ExamplePreview";
+import { CodeBlock } from "@/components/docs/code-block";
+import { ExamplePreview } from "@/components/docs/example-preview";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useTranslation } from "@/hooks/useTranslation";
+import { useTranslation } from "@/hooks/use-translation";
 
 const basicCode =
 	"const { videoRef, blinkCount, passed, isReady } = useLiveness({\n" +

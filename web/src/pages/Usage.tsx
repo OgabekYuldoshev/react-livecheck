@@ -1,5 +1,5 @@
-import { CodeBlock } from "@/components/docs/CodeBlock";
-import { useTranslation } from "@/hooks/useTranslation";
+import { CodeBlock } from "@/components/docs/code-block";
+import { useTranslation } from "@/hooks/use-translation";
 
 const usageCode =
 	'import { useLiveness, LivenessErrorCode } from "react-livecheck";\n\n' +

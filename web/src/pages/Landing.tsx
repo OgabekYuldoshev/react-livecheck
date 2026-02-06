@@ -1,20 +1,20 @@
-import { useState } from "react";
-import { useTranslation } from "@/hooks/useTranslation";
-import { CodeBlock } from "@/components/docs/CodeBlock";
-import { LivenessModal } from "@/components/LivenessModal";
-import { Button, buttonVariants } from "@/components/ui/button";
 import {
-	ScanFace,
-	Package,
-	Code2,
-	Camera,
-	ShieldCheck,
-	CheckCircle2,
-	Github,
-	BookOpen,
 	AlertCircle,
+	BookOpen,
+	Camera,
+	CheckCircle2,
+	Code2,
+	Github,
+	Package,
 	Play,
+	ScanFace,
+	ShieldCheck,
 } from "lucide-react";
+import { useState } from "react";
+import { CodeBlock } from "@/components/docs/code-block";
+import { LivenessModal } from "@/components/liveness-modal";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { useTranslation } from "@/hooks/use-translation";
 
 const installCode = "pnpm add react-livecheck";
 
@@ -54,7 +54,7 @@ const usageCode =
 	"      {faceBoundingBox && (\n" +
 	'        <div style={{ position: "absolute", left: `' +
 	"${faceBoundingBox.x * 100}%`,\n" +
-	'          top: `${faceBoundingBox.y * 100}%`, width: `${faceBoundingBox.width * 100}%`,\n' +
+	"          top: `${faceBoundingBox.y * 100}%`, width: `${faceBoundingBox.width * 100}%`,\n" +
 	'          height: `${faceBoundingBox.height * 100}%`, border: "2px solid lime" }} />\n' +
 	"      )}\n" +
 	"      {isReady && !isFaceDetected && <p>Position your face in the frame.</p>}\n" +
@@ -94,14 +94,11 @@ export default function Landing() {
 				<div className="flex items-center justify-center size-16 rounded-2xl bg-primary/10 text-primary mb-6 md:size-20">
 					<ScanFace className="size-8 md:size-10" strokeWidth={1.5} />
 				</div>
-				<h1 className="text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
-					react-livecheck
-				</h1>
+				<h1 className="text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">react-livecheck</h1>
 				<p className="mt-4 max-w-xl text-center text-muted-foreground md:text-lg leading-relaxed">
 					{t("intro.description")}
 				</p>
 				<div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-				
 					<a
 						href="https://github.com/OgabekYuldoshev/react-livecheck"
 						target="_blank"
@@ -111,11 +108,7 @@ export default function Landing() {
 						<Github className="size-4" />
 						{t("common.github")}
 					</a>
-					<Button
-						type="button"
-						variant="outline"
-						onClick={() => setDemoOpen(true)}
-					>
+					<Button type="button" variant="outline" onClick={() => setDemoOpen(true)}>
 						<Play className="size-4" />
 						{t("common.tryDemo")}
 					</Button>
@@ -139,7 +132,9 @@ export default function Landing() {
 							<Package className="size-4" />
 						</div>
 						<h2 className="text-xl font-semibold">
-							<span className="mr-1.5" aria-hidden>📦</span>
+							<span className="mr-1.5" aria-hidden>
+								📦
+							</span>
 							{t("installation.title")}
 						</h2>
 					</div>
@@ -173,13 +168,13 @@ export default function Landing() {
 							<Code2 className="size-4" />
 						</div>
 						<h2 className="text-xl font-semibold">
-							<span className="mr-1.5" aria-hidden>💻</span>
+							<span className="mr-1.5" aria-hidden>
+								💻
+							</span>
 							{t("usage.title")}
 						</h2>
 					</div>
-					<p className="text-sm text-muted-foreground mb-4">
-						{t("usage.description")}
-					</p>
+					<p className="text-sm text-muted-foreground mb-4">{t("usage.description")}</p>
 					<CodeBlock code={usageCode} language="tsx" className="rounded-lg text-[13px]" />
 				</div>
 			</section>
@@ -192,13 +187,13 @@ export default function Landing() {
 							<BookOpen className="size-4" />
 						</div>
 						<h2 className="text-xl font-semibold">
-							<span className="mr-1.5" aria-hidden>📖</span>
+							<span className="mr-1.5" aria-hidden>
+								📖
+							</span>
 							{t("api.title")}
 						</h2>
 					</div>
-					<p className="text-sm text-muted-foreground mb-4">
-						{t("api.useLivenessOptions")}
-					</p>
+					<p className="text-sm text-muted-foreground mb-4">{t("api.useLivenessOptions")}</p>
 					{/* Options */}
 					<div className="mb-6 rounded-lg border border-border/50 bg-background/80 overflow-hidden">
 						<div className="border-b border-border/50 bg-muted/30 px-4 py-2.5">
@@ -217,13 +212,48 @@ export default function Landing() {
 									</tr>
 								</thead>
 								<tbody className="divide-y divide-border/50">
-									<tr><td className="px-4 py-2 font-mono text-xs">requiredBlinks</td><td className="px-4 py-2 text-muted-foreground">number</td><td className="px-4 py-2">2</td><td className="px-4 py-2 text-muted-foreground">{t("apiTable.optRequiredBlinksDesc")}</td></tr>
-									<tr><td className="px-4 py-2 font-mono text-xs">onSuccess</td><td className="px-4 py-2 text-muted-foreground">() =&gt; void</td><td className="px-4 py-2">—</td><td className="px-4 py-2 text-muted-foreground">{t("apiTable.optOnSuccessDesc")}</td></tr>
-									<tr><td className="px-4 py-2 font-mono text-xs">onError</td><td className="px-4 py-2 text-muted-foreground">(err) =&gt; void</td><td className="px-4 py-2">—</td><td className="px-4 py-2 text-muted-foreground">{t("apiTable.optOnErrorDesc")}</td></tr>
-									<tr><td className="px-4 py-2 font-mono text-xs">locateFile</td><td className="px-4 py-2 text-muted-foreground">(file) =&gt; string</td><td className="px-4 py-2">jsDelivr CDN</td><td className="px-4 py-2 text-muted-foreground">{t("apiTable.optLocateFileDesc")}</td></tr>
-									<tr><td className="px-4 py-2 font-mono text-xs">camera</td><td className="px-4 py-2 text-muted-foreground">object</td><td className="px-4 py-2">640×480, user</td><td className="px-4 py-2 text-muted-foreground">{t("apiTable.optCameraDesc")}</td></tr>
-									<tr><td className="px-4 py-2 font-mono text-xs">faceMesh</td><td className="px-4 py-2 text-muted-foreground">object</td><td className="px-4 py-2">—</td><td className="px-4 py-2 text-muted-foreground">{t("apiTable.optFaceMeshDesc")}</td></tr>
-									<tr><td className="px-4 py-2 font-mono text-xs">faceDetectionTimeout</td><td className="px-4 py-2 text-muted-foreground">number</td><td className="px-4 py-2">0 (off)</td><td className="px-4 py-2 text-muted-foreground">{t("apiTable.optFaceDetectionTimeoutDesc")}</td></tr>
+									<tr>
+										<td className="px-4 py-2 font-mono text-xs">requiredBlinks</td>
+										<td className="px-4 py-2 text-muted-foreground">number</td>
+										<td className="px-4 py-2">2</td>
+										<td className="px-4 py-2 text-muted-foreground">{t("apiTable.optRequiredBlinksDesc")}</td>
+									</tr>
+									<tr>
+										<td className="px-4 py-2 font-mono text-xs">onSuccess</td>
+										<td className="px-4 py-2 text-muted-foreground">() =&gt; void</td>
+										<td className="px-4 py-2">—</td>
+										<td className="px-4 py-2 text-muted-foreground">{t("apiTable.optOnSuccessDesc")}</td>
+									</tr>
+									<tr>
+										<td className="px-4 py-2 font-mono text-xs">onError</td>
+										<td className="px-4 py-2 text-muted-foreground">(err) =&gt; void</td>
+										<td className="px-4 py-2">—</td>
+										<td className="px-4 py-2 text-muted-foreground">{t("apiTable.optOnErrorDesc")}</td>
+									</tr>
+									<tr>
+										<td className="px-4 py-2 font-mono text-xs">locateFile</td>
+										<td className="px-4 py-2 text-muted-foreground">(file) =&gt; string</td>
+										<td className="px-4 py-2">jsDelivr CDN</td>
+										<td className="px-4 py-2 text-muted-foreground">{t("apiTable.optLocateFileDesc")}</td>
+									</tr>
+									<tr>
+										<td className="px-4 py-2 font-mono text-xs">camera</td>
+										<td className="px-4 py-2 text-muted-foreground">object</td>
+										<td className="px-4 py-2">640×480, user</td>
+										<td className="px-4 py-2 text-muted-foreground">{t("apiTable.optCameraDesc")}</td>
+									</tr>
+									<tr>
+										<td className="px-4 py-2 font-mono text-xs">faceMesh</td>
+										<td className="px-4 py-2 text-muted-foreground">object</td>
+										<td className="px-4 py-2">—</td>
+										<td className="px-4 py-2 text-muted-foreground">{t("apiTable.optFaceMeshDesc")}</td>
+									</tr>
+									<tr>
+										<td className="px-4 py-2 font-mono text-xs">faceDetectionTimeout</td>
+										<td className="px-4 py-2 text-muted-foreground">number</td>
+										<td className="px-4 py-2">0 (off)</td>
+										<td className="px-4 py-2 text-muted-foreground">{t("apiTable.optFaceDetectionTimeoutDesc")}</td>
+									</tr>
 								</tbody>
 							</table>
 						</div>
@@ -245,14 +275,46 @@ export default function Landing() {
 									</tr>
 								</thead>
 								<tbody className="divide-y divide-border/50">
-									<tr><td className="px-4 py-2 font-mono text-xs">videoRef</td><td className="px-4 py-2 text-muted-foreground">RefObject</td><td className="px-4 py-2 text-muted-foreground">{t("apiTable.retVideoRef")}</td></tr>
-									<tr><td className="px-4 py-2 font-mono text-xs">blinkCount</td><td className="px-4 py-2 text-muted-foreground">number</td><td className="px-4 py-2 text-muted-foreground">{t("apiTable.retBlinkCount")}</td></tr>
-									<tr><td className="px-4 py-2 font-mono text-xs">passed</td><td className="px-4 py-2 text-muted-foreground">boolean</td><td className="px-4 py-2 text-muted-foreground">{t("apiTable.retPassed")}</td></tr>
-									<tr><td className="px-4 py-2 font-mono text-xs">error</td><td className="px-4 py-2 text-muted-foreground">LivenessError | null</td><td className="px-4 py-2 text-muted-foreground">{t("apiTable.retError")}</td></tr>
-									<tr><td className="px-4 py-2 font-mono text-xs">isReady</td><td className="px-4 py-2 text-muted-foreground">boolean</td><td className="px-4 py-2 text-muted-foreground">{t("apiTable.retIsReady")}</td></tr>
-									<tr><td className="px-4 py-2 font-mono text-xs">isFaceDetected</td><td className="px-4 py-2 text-muted-foreground">boolean</td><td className="px-4 py-2 text-muted-foreground">{t("apiTable.retIsFaceDetected")}</td></tr>
-									<tr><td className="px-4 py-2 font-mono text-xs">faceBoundingBox</td><td className="px-4 py-2 text-muted-foreground">FaceBoundingBox | null</td><td className="px-4 py-2 text-muted-foreground">{t("apiTable.retFaceBoundingBox")}</td></tr>
-									<tr><td className="px-4 py-2 font-mono text-xs">retry</td><td className="px-4 py-2 text-muted-foreground">() =&gt; void</td><td className="px-4 py-2 text-muted-foreground">{t("apiTable.retRetry")}</td></tr>
+									<tr>
+										<td className="px-4 py-2 font-mono text-xs">videoRef</td>
+										<td className="px-4 py-2 text-muted-foreground">RefObject</td>
+										<td className="px-4 py-2 text-muted-foreground">{t("apiTable.retVideoRef")}</td>
+									</tr>
+									<tr>
+										<td className="px-4 py-2 font-mono text-xs">blinkCount</td>
+										<td className="px-4 py-2 text-muted-foreground">number</td>
+										<td className="px-4 py-2 text-muted-foreground">{t("apiTable.retBlinkCount")}</td>
+									</tr>
+									<tr>
+										<td className="px-4 py-2 font-mono text-xs">passed</td>
+										<td className="px-4 py-2 text-muted-foreground">boolean</td>
+										<td className="px-4 py-2 text-muted-foreground">{t("apiTable.retPassed")}</td>
+									</tr>
+									<tr>
+										<td className="px-4 py-2 font-mono text-xs">error</td>
+										<td className="px-4 py-2 text-muted-foreground">LivenessError | null</td>
+										<td className="px-4 py-2 text-muted-foreground">{t("apiTable.retError")}</td>
+									</tr>
+									<tr>
+										<td className="px-4 py-2 font-mono text-xs">isReady</td>
+										<td className="px-4 py-2 text-muted-foreground">boolean</td>
+										<td className="px-4 py-2 text-muted-foreground">{t("apiTable.retIsReady")}</td>
+									</tr>
+									<tr>
+										<td className="px-4 py-2 font-mono text-xs">isFaceDetected</td>
+										<td className="px-4 py-2 text-muted-foreground">boolean</td>
+										<td className="px-4 py-2 text-muted-foreground">{t("apiTable.retIsFaceDetected")}</td>
+									</tr>
+									<tr>
+										<td className="px-4 py-2 font-mono text-xs">faceBoundingBox</td>
+										<td className="px-4 py-2 text-muted-foreground">FaceBoundingBox | null</td>
+										<td className="px-4 py-2 text-muted-foreground">{t("apiTable.retFaceBoundingBox")}</td>
+									</tr>
+									<tr>
+										<td className="px-4 py-2 font-mono text-xs">retry</td>
+										<td className="px-4 py-2 text-muted-foreground">() =&gt; void</td>
+										<td className="px-4 py-2 text-muted-foreground">{t("apiTable.retRetry")}</td>
+									</tr>
 								</tbody>
 							</table>
 						</div>
@@ -266,21 +328,14 @@ export default function Landing() {
 						</div>
 						<div className="divide-y divide-border/50">
 							{errorCodeKeys.map(([code, key]) => (
-								<div
-									key={code}
-									className="flex flex-col gap-0.5 px-4 py-2.5 sm:flex-row sm:items-center sm:gap-4"
-								>
-									<code className="text-xs font-mono text-foreground shrink-0 w-40">
-										{code}
-									</code>
+								<div key={code} className="flex flex-col gap-0.5 px-4 py-2.5 sm:flex-row sm:items-center sm:gap-4">
+									<code className="text-xs font-mono text-foreground shrink-0 w-40">{code}</code>
 									<span className="text-sm text-muted-foreground">{t(key)}</span>
 								</div>
 							))}
 						</div>
 					</div>
-					<p className="mt-3 text-xs text-muted-foreground">
-						{t("apiTable.retryNote")}
-					</p>
+					<p className="mt-3 text-xs text-muted-foreground">{t("apiTable.retryNote")}</p>
 				</div>
 			</section>
 

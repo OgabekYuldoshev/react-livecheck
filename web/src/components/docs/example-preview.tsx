@@ -1,6 +1,6 @@
 import { LivenessErrorCode, useLiveness } from "react-livecheck";
 import { Button } from "@/components/ui/button";
-import { useTranslation } from "@/hooks/useTranslation";
+import { useTranslation } from "@/hooks/use-translation";
 
 type Variant = "basic" | "full";
 

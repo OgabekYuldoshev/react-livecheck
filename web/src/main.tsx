@@ -1,8 +1,8 @@
 import "./index.css";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { I18nProvider } from "@/context/I18nContext";
-import { App } from "./App";
+import { I18nProvider } from "@/context/i18n-context";
+import { App } from "./app";
 
 createRoot(document.getElementById("root") as HTMLElement).render(
 	<StrictMode>

@@ -1,5 +1,5 @@
-import { CodeBlock } from "@/components/docs/CodeBlock";
-import { useTranslation } from "@/hooks/useTranslation";
+import { CodeBlock } from "@/components/docs/code-block";
+import { useTranslation } from "@/hooks/use-translation";
 
 export default function Installation() {
 	const { t } = useTranslation();

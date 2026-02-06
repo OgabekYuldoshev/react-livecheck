@@ -1,14 +1,8 @@
 import { useEffect, useRef } from "react";
 import { LivenessErrorCode, useLiveness } from "react-livecheck";
-import { useTranslation } from "@/hooks/useTranslation";
-import {
-	Dialog,
-	DialogContent,
-	DialogHeader,
-	DialogTitle,
-	DialogDescription,
-} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { useTranslation } from "@/hooks/use-translation";
 
 type LivenessModalProps = {
 	open: boolean;
@@ -21,16 +15,7 @@ function LivenessContent({ onSuccess }: { onSuccess: () => void }) {
 	const { t } = useTranslation();
 	const autoCloseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-	const {
-		videoRef,
-		blinkCount,
-		passed,
-		error,
-		isReady,
-		isFaceDetected,
-		faceBoundingBox,
-		retry,
-	} = useLiveness({
+	const { videoRef, blinkCount, passed, error, isReady, isFaceDetected, faceBoundingBox, retry } = useLiveness({
 		requiredBlinks: 2,
 		onSuccess: () => {},
 		onError: () => {},
@@ -89,18 +74,10 @@ function LivenessContent({ onSuccess }: { onSuccess: () => void }) {
 			<div className="relative aspect-[4/3] overflow-hidden rounded-lg border border-border bg-muted/30">
 				{!isReady && (
 					<div className="absolute inset-0 flex items-center justify-center p-4">
-						<p className="text-center text-sm text-muted-foreground">
-							{t("common.startingCamera")}
-						</p>
+						<p className="text-center text-sm text-muted-foreground">{t("common.startingCamera")}</p>
 					</div>
 				)}
-				<video
-					ref={videoRef}
-					autoPlay
-					playsInline
-					muted
-					className="block h-full w-full object-cover"
-				/>
+				<video ref={videoRef} autoPlay playsInline muted className="block h-full w-full object-cover" />
 				{faceBoundingBox && (
 					<div
 						className="pointer-events-none absolute border-2 border-green-500"
@@ -114,9 +91,7 @@ function LivenessContent({ onSuccess }: { onSuccess: () => void }) {
 				)}
 			</div>
 			<div className="rounded-lg border border-border/50 bg-muted/20 px-3 py-2 text-sm">
-				{isReady && !isFaceDetected && (
-					<p className="text-muted-foreground">{t("common.positionFace")}</p>
-				)}
+				{isReady && !isFaceDetected && <p className="text-muted-foreground">{t("common.positionFace")}</p>}
 				<p className="text-foreground">
 					{t("common.blinks")}: {blinkCount}
 					{passed && <span className="ml-2 font-medium text-green-600 dark:text-green-400">{t("common.passed")}</span>}
@@ -131,18 +106,12 @@ export function LivenessModal({ open, onOpenChange }: LivenessModalProps) {
 
 	return (
 		<Dialog open={open} onOpenChange={onOpenChange}>
-			<DialogContent
-				showClose={true}
-				closeLabel={t("demo.close")}
-				className="sm:max-w-md"
-			>
+			<DialogContent showClose={true} closeLabel={t("demo.close")} className="sm:max-w-md">
 				<DialogHeader>
 					<DialogTitle>{t("demo.title")}</DialogTitle>
 					<DialogDescription>{t("demo.description")}</DialogDescription>
 				</DialogHeader>
-				{open ? (
-					<LivenessContent onSuccess={() => onOpenChange(false)} />
-				) : null}
+				{open ? <LivenessContent onSuccess={() => onOpenChange(false)} /> : null}
 			</DialogContent>
 		</Dialog>
 	);

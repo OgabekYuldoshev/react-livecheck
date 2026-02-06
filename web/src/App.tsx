@@ -1,15 +1,12 @@
-import { LanguageSwitcher } from "@/components/docs/LanguageSwitcher";
 import { Github } from "lucide-react";
-import Landing from "@/pages/Landing";
+import { LanguageSwitcher } from "@/components/docs/language-switcher";
+import Landing from "@/pages/landing";
 
 function TopBar() {
 	return (
 		<header className="sticky top-0 z-40 w-full border-b border-border/40 bg-background/80 backdrop-blur-sm">
 			<div className="flex h-14 items-center justify-between px-4 md:px-8">
-				<a
-					href="/"
-					className="text-sm font-semibold text-foreground hover:opacity-80 transition-opacity"
-				>
+				<a href="/" className="text-sm font-semibold text-foreground hover:opacity-80 transition-opacity">
 					react-livecheck
 				</a>
 				<div className="flex items-center gap-4">

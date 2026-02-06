@@ -1,13 +1,15 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useTranslation } from "@/hooks/useTranslation";
+import { useTranslation } from "@/hooks/use-translation";
 
 export default function ComponentsUseLiveness() {
 	const { t } = useTranslation();
 	return (
 		<article className="space-y-4">
 			<h1 className="text-2xl font-semibold tracking-tight">{t("components.useLivenessTitle")}</h1>
-			<Badge variant="secondary" className="text-xs font-normal">Hook</Badge>
+			<Badge variant="secondary" className="text-xs font-normal">
+				Hook
+			</Badge>
 			<p className="text-sm text-muted-foreground leading-relaxed">{t("components.useLivenessPurpose")}</p>
 			<section className="space-y-1.5">
 				<h2 className="text-lg font-medium">{t("components.behavior")}</h2>
