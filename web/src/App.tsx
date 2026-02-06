@@ -1,6 +1,6 @@
 import { Github, ScanFace } from "lucide-react";
 import { LanguageSwitcher } from "@/components/docs/language-switcher";
-import Landing from "@/pages/landing";
+import { Landing } from "@/pages/landing";
 
 function TopBar() {
 	return (

@@ -83,7 +83,7 @@ const errorCodeKeys: [string, string][] = [
 	["UNKNOWN", "apiTable.errUnknown"],
 ];
 
-export default function Landing() {
+export function Landing() {
 	const { t } = useTranslation();
 	const [demoOpen, setDemoOpen] = useState(false);
 	return (
