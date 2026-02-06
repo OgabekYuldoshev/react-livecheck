@@ -1,4 +1,21 @@
 {
 	"root": false,
-	"extends": "//"
+	"extends": "//",
+	"css": {
+		"parser": {
+			"tailwindDirectives": true
+		}
+	},
+	"linter": {
+		"rules": {
+			"style": {
+				"useFilenamingConvention": "off",
+				"noDefaultExport": "off"
+			},
+			"suspicious": {
+				"noArrayIndexKey": "off",
+				"noTemplateCurlyInString": "off"
+			}
+		}
+	}
 }
