@@ -1,5 +1,9 @@
 # react-livecheck
 
+<p align="center">
+  <img src="https://react-livecheck.vercel.app/favicon.svg" alt="react-livecheck" width="64" height="64" />
+</p>
+
 React hook for **person liveness detection**
 
 **Live demo:** [https://react-livecheck.vercel.app/](https://react-livecheck.vercel.app/) — verify that a user is a real live person via blink detection (MediaPipe Face Mesh). Build your own UI; the hook handles camera, face detection, and pass/fail state.
