@@ -13,6 +13,25 @@ import type { FaceBoundingBox, Landmarks, LivenessError, UseLivenessOptions, Use
 import { LivenessErrorCode } from "./types";
 import { ear, getMediaErrorCode, isFaceCentered } from "./utils";
 
+function stopCameraStream(
+	videoRef: { current: HTMLVideoElement | null },
+	cameraRef: { current: Camera | null },
+): void {
+	try {
+		cameraRef.current?.stop?.();
+	} catch {
+		// MediaPipe Camera.stop() may be missing or throw
+	}
+	cameraRef.current = null;
+	const video = videoRef.current;
+	if (video?.srcObject && video.srcObject instanceof MediaStream) {
+		for (const track of video.srcObject.getTracks()) {
+			track.stop();
+		}
+		video.srcObject = null;
+	}
+}
+
 export function useLiveness(options: UseLivenessOptions = {}): UseLivenessReturn {
 	const optionsRef = useRef(options);
 	optionsRef.current = options;
@@ -98,8 +117,7 @@ export function useLiveness(options: UseLivenessOptions = {}): UseLivenessReturn
 				});
 				setPassed(false);
 				setReady(false);
-				cameraRef.current?.stop();
-				cameraRef.current = null;
+				stopCameraStream(videoRef, cameraRef);
 			}
 			return;
 		}
@@ -192,8 +210,7 @@ export function useLiveness(options: UseLivenessOptions = {}): UseLivenessReturn
 						message: err instanceof Error ? err.message : "Model failed to load",
 					});
 					setReady(false);
-					cameraRef.current?.stop();
-					cameraRef.current = null;
+					stopCameraStream(videoRef, cameraRef);
 				}
 			},
 		});
@@ -218,8 +235,7 @@ export function useLiveness(options: UseLivenessOptions = {}): UseLivenessReturn
 							setReady(false);
 							setFaceDetected(false);
 							setFaceBoundingBox(null);
-							cameraRef.current?.stop();
-							cameraRef.current = null;
+							stopCameraStream(videoRef, cameraRef);
 						}
 					}, timeoutMs);
 				}
@@ -230,8 +246,7 @@ export function useLiveness(options: UseLivenessOptions = {}): UseLivenessReturn
 						message: playErr instanceof Error ? playErr.message : "Video play failed (try allowing autoplay)",
 					});
 					setReady(false);
-					cameraRef.current?.stop();
-					cameraRef.current = null;
+					stopCameraStream(videoRef, cameraRef);
 				});
 			})
 			.catch((err: unknown) => {
@@ -250,8 +265,7 @@ export function useLiveness(options: UseLivenessOptions = {}): UseLivenessReturn
 				clearTimeout(faceDetectionTimeoutRef.current);
 				faceDetectionTimeoutRef.current = null;
 			}
-			cameraRef.current?.stop();
-			cameraRef.current = null;
+			stopCameraStream(videoRef, cameraRef);
 		};
 	}, [canUseMedia, retryCount, detectBlink]);
 

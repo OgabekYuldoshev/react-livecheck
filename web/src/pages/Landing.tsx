@@ -1,5 +1,8 @@
+import { useState } from "react";
 import { useTranslation } from "@/hooks/useTranslation";
 import { CodeBlock } from "@/components/docs/CodeBlock";
+import { LivenessModal } from "@/components/LivenessModal";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
 	ScanFace,
 	Package,
@@ -10,6 +13,7 @@ import {
 	Github,
 	BookOpen,
 	AlertCircle,
+	Play,
 } from "lucide-react";
 
 const installCode = "pnpm add react-livecheck";
@@ -60,7 +64,6 @@ const usageCode =
 	"}";
 
 const requirements = [
-	{ key: "reqReact" as const, icon: Package },
 	{ key: "reqHttps" as const, icon: ShieldCheck },
 	{ key: "reqBrowser" as const, icon: Camera },
 	{ key: "reqInstance" as const, icon: AlertCircle },
@@ -82,8 +85,10 @@ const errorCodeKeys: [string, string][] = [
 
 export default function Landing() {
 	const { t } = useTranslation();
+	const [demoOpen, setDemoOpen] = useState(false);
 	return (
 		<div className="min-h-screen flex flex-col">
+			<LivenessModal open={demoOpen} onOpenChange={setDemoOpen} />
 			{/* Hero */}
 			<section className="flex flex-col items-center justify-center px-4 pt-20 pb-20 md:pt-28 md:pb-28">
 				<div className="flex items-center justify-center size-16 rounded-2xl bg-primary/10 text-primary mb-6 md:size-20">
@@ -96,20 +101,29 @@ export default function Landing() {
 					{t("intro.description")}
 				</p>
 				<div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+				
 					<a
 						href="https://github.com/OgabekYuldoshev/react-livecheck"
 						target="_blank"
 						rel="noopener noreferrer"
-						className="inline-flex items-center gap-2 rounded-lg bg-primary text-primary-foreground px-5 py-2.5 text-sm font-medium hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20"
+						className={buttonVariants()}
 					>
 						<Github className="size-4" />
 						{t("common.github")}
 					</a>
+					<Button
+						type="button"
+						variant="outline"
+						onClick={() => setDemoOpen(true)}
+					>
+						<Play className="size-4" />
+						{t("common.tryDemo")}
+					</Button>
 					<a
 						href="https://www.npmjs.com/package/react-livecheck"
 						target="_blank"
 						rel="noopener noreferrer"
-						className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-5 py-2.5 text-sm font-medium hover:bg-accent hover:border-primary/30 transition-colors"
+						className={buttonVariants({ variant: "outline" })}
 					>
 						<Package className="size-4" />
 						{t("common.npm")}
