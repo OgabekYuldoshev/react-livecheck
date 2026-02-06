@@ -43,10 +43,10 @@ function LivenessContent({ onSuccess }: { onSuccess: () => void }) {
 					)}
 				</div>
 				<div className="flex flex-wrap gap-2">
-					<Button type="button" onClick={retry}>
+					<Button type="button" onClick={retry} className="min-h-11 touch-manipulation sm:min-h-0">
 						{t("demo.retry")}
 					</Button>
-					<Button type="button" variant="outline" onClick={onSuccess}>
+					<Button type="button" variant="outline" onClick={onSuccess} className="min-h-11 touch-manipulation sm:min-h-0">
 						{t("demo.close")}
 					</Button>
 				</div>
@@ -62,7 +62,7 @@ function LivenessContent({ onSuccess }: { onSuccess: () => void }) {
 					<p className="mt-1 text-muted-foreground">{t("demo.successMessage")}</p>
 					<p className="mt-2 text-xs text-muted-foreground">{t("demo.autoClose")}</p>
 				</div>
-				<Button type="button" variant="outline" onClick={onSuccess}>
+				<Button type="button" variant="outline" onClick={onSuccess} className="min-h-11 touch-manipulation sm:min-h-0">
 					{t("demo.close")}
 				</Button>
 			</div>
@@ -70,8 +70,8 @@ function LivenessContent({ onSuccess }: { onSuccess: () => void }) {
 	}
 
 	return (
-		<div className="space-y-4">
-			<div className="relative aspect-[4/3] overflow-hidden rounded-lg border border-border bg-muted/30">
+		<div className="space-y-3 sm:space-y-4">
+			<div className="relative aspect-[4/3] max-h-[45vh] min-h-[180px] overflow-hidden rounded-lg border border-border bg-muted/30 sm:max-h-none sm:min-h-0">
 				{!isReady && (
 					<div className="absolute inset-0 flex items-center justify-center p-4">
 						<p className="text-center text-sm text-muted-foreground">{t("common.startingCamera")}</p>
@@ -106,10 +106,10 @@ export function LivenessModal({ open, onOpenChange }: LivenessModalProps) {
 
 	return (
 		<Dialog open={open} onOpenChange={onOpenChange}>
-			<DialogContent showClose={true} closeLabel={t("demo.close")} className="sm:max-w-md">
+			<DialogContent showClose={true} closeLabel={t("demo.close")} className="w-[calc(100%-1.5rem)] sm:max-w-md">
 				<DialogHeader>
-					<DialogTitle>{t("demo.title")}</DialogTitle>
-					<DialogDescription>{t("demo.description")}</DialogDescription>
+					<DialogTitle className="text-base sm:text-lg">{t("demo.title")}</DialogTitle>
+					<DialogDescription className="text-xs sm:text-sm">{t("demo.description")}</DialogDescription>
 				</DialogHeader>
 				{open ? <LivenessContent onSuccess={() => onOpenChange(false)} /> : null}
 			</DialogContent>
