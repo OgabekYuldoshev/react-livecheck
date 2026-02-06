@@ -1,6 +1,8 @@
 # react-livecheck
 
-React hook for **person liveness detection** — verify that a user is a real live person via blink detection (MediaPipe Face Mesh). Build your own UI; the hook handles camera, face detection, and pass/fail state.
+React hook for **person liveness detection**
+
+**Live demo:** [https://react-livecheck.vercel.app/](https://react-livecheck.vercel.app/) — verify that a user is a real live person via blink detection (MediaPipe Face Mesh). Build your own UI; the hook handles camera, face detection, and pass/fail state.
 
 ## Installation
 
@@ -10,7 +12,6 @@ pnpm add react-livecheck
 
 **Requirements**
 
-- **React 19** and peer dependency `react`
 - **HTTPS** in production (or `localhost`). Camera access requires a secure context; `getUserMedia` is blocked on plain HTTP.
 - **Modern browser** with `navigator.mediaDevices` and support for MediaPipe (Chrome, Firefox, Safari, Edge). Some corporate networks may block the default CDN; use a custom `locateFile` or self-host model files if needed.
 - Use **one `useLiveness` instance per page** (one camera stream). Multiple instances may conflict.

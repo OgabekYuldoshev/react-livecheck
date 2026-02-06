@@ -29,7 +29,7 @@
 	"bugs": {
 		"url": "https://github.com/OgabekYuldoshev/react-livecheck/issues"
 	},
-	"homepage": "https://github.com/OgabekYuldoshev/react-livecheck#readme",
+	"homepage": "https://react-livecheck.vercel.app/",
 	"scripts": {
 		"preinstall": "npx only-allow pnpm",
 		"prepublishOnly": "pnpm run build",
